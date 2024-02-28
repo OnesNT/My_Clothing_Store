@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - My Clothing Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Shop - My Clothing Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('shop') }}">Shop</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="products">
+        <h2>Shop</h2>
+        {% for product in products %}
+            <div class="product">
+                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>${{ product.price }}</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Clothing Store. All rights reserved.</p>
+    </footer>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - My Clothing Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Shop - My Clothing Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('shop') }}">Shop</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="products">
+        <h2>Shop</h2>
+        <h3>Stores:</h3>
+        <ul>
+            {% for store in stores %}
+            <li>{{ store.store_nm }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Clothes:</h3>
+        <ul>
+            {% for cloth in clothes %}
+            <li>{{ cloth.clothes_nm }} - {{ cloth.category_nm }} - ${{ cloth.price_amt }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Brands:</h3>
+        <ul>
+            {% for brand in brands %}
+            <li>{{ brand.brand_nm }} - Designer: {{ brand.head_designer_nm }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Clothing Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
