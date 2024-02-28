@@ -43,6 +43,28 @@ Purpose:
 
 The purpose of "My Clothing Store" is to provide a comprehensive and user-friendly platform for purchasing clothing items online. By offering a diverse selection of products, detailed product information, and secure payment options, the application aims to satisfy the fashion needs of its users and enhance their overall shopping experience.
 
+### Logical model
+
+The database is in 3rd normal form.
+
+1 NF - since each table contains only one value for each attribute.
+
+2NF - all attributes depend on the primary key as a whole, and not on some part of it. In those tables where there is one primary key - this is obviously done. In tables `Clothes_in_order` and `Clothes_in_store` are so because the number of things of the same `id` depends on both the `id` of the store or order and the `id` of the item. To make a versioned table consistent with the 2nd normal form, we had to move versioning into a separate
+table `employee_position`, because if you leave it all in one table, then the primary
+the key will already be a pair of `employee_id` and `valid_from_dttm` and then attributes such as,
+for example, `employer_nm` will only depend on part of the primary key.
+
+3NF - all attributes depend only on the primary key, but not on other attributes. Dont clear
+how to prove it formally, but it seems obvious enough.
+
+The `employee_position` table is versioned of type `SCD2`. In it for each version
+position of the employee, a new line is created in which his new position and
+salary with the addition of the start and end date when a particular employee worked
+specific position.
+
+![tag1](images/LogicalModel.png "Logical model of the database").
+
+
 ### Physical Model
 
 ## Customer
