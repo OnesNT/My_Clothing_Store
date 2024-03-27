@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Clothing - Admin</title>
+</head>
+<body>
+    <h1>Add New Clothing</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.brand_id.label }} {{ form.brand_id }}
+        </div>
+        <div>
+            {{ form.clothes_nm.label }} {{ form.clothes_nm }}
+        </div>
+        <div>
+            {{ form.category_nm.label }} {{ form.category_nm }}
+        </div>
+        <div>
+            {{ form.color_nm.label }} {{ form.color_nm }}
+        </div>
+        <div>
+            {{ form.price_amt.label }} {{ form.price_amt }}
+        </div>
+        <div>
+            {{ form.sex_nm.label }} {{ form.sex_nm }}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

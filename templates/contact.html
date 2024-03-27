@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Clothing Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Contact - My Clothing Store</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('shop') }}">Shop</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>For any inquiries or assistance, please feel free to contact us:</p>
+        <ul>
+            <li>Email: nhatquangmipt@gmail.com</li>
+            <li>Phone: +7(926)071-45-99</li>
+            <li>Address: Долгопрудный, Московская обл</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Clothing Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
