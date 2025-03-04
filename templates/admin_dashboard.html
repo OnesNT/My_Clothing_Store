@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <a href="{{ url_for('add_clothing') }}">Add New Clothing</a>
+    
+    <h2>Clothing Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Brand ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in clothing_items %}
+            <tr>
+                <td>{{ item.clothes_id }}</td>
+                <td>{{ item.brand_id }}</td>
+                <td>{{ item.clothes_nm }}</td>
+                <td>{{ item.category_nm }}</td>
+                <td>{{ item.color_nm }}</td>
+                <td>{{ item.price_amt }}</td>
+                <td>{{ item.sex_nm }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <h1>Shop</h1>
+    <div class="clothing-items">
+        {% for item in clothing_items %}
+            <div class="clothing-item">
+                <h2>{{ item.clothes_nm }}</h2>
+                <p>Color: {{ item.color_nm }}</p>
+                <p>Price: {{ item.price_amt }}</p>
+                <p>Sex: {{ item.sex_nm }}</p>
+                <form action="{{ url_for('add_to_cart', clothes_id=item.clothes_id) }}" method="post">
+                    <button type="submit">Buy</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <h1>Shop</h1>
+    <div class="clothing-items">
+        {% for item in clothing_items %}
+            <div class="clothing-item">
+                <h2>{{ item.clothes_nm }}</h2>
+                <p>Color: {{ item.color_nm }}</p>
+                <p>Price: {{ item.price_amt }}</p>
+                <p>Sex: {{ item.sex_nm }}</p>
+                {% if current_user.is_authenticated %}
+                    <form action="{{ url_for('add_to_cart', clothes_id=item.clothes_id) }}" method="post">
+                        <button type="submit">Buy</button>
+                    </form>
+                {% else %}
+                    <p>Please <a href="{{ url_for('login') }}">log in</a> to buy.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <h1>Shop</h1>
+    {%if signed_in%}
+    <p> you are logged in as {{username}} - <a href="{{ url_for('logout')}}"">logout</a></p>
+    {%endif%}
+    <nav>
+        <ul>
+            {%if id == 1%}
+            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+            {%endif%}
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('shop') }}">Shop</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            {%if signed_in%}
+            <li><a href="{{ url_for('cart') }}">Cart</a></li>
+            {%endif%}
+        </ul>
+    </nav>
+    <div class="clothing-items">
+        {% if not current_user.is_authenticated %}
+            <p>Please <a href="{{ url_for('login') }}">log in</a> to buy.</p>
+        {% endif %}
+        {% for item in clothing_items %}
+            <div class="clothing-item">
+                <h2>{{ item.clothes_nm }}</h2>
+                <p>Color: {{ item.color_nm }}</p>
+                <p>Price: {{ item.price_amt }}</p>
+                <p>Sex: {{ item.sex_nm }}</p>
+                {% if current_user.is_authenticated %}
+                    <form action="{{ url_for('add_to_cart', clothes_id=item.clothes_id) }}" method="post">
+                        <!-- <button type="submit">Buy</button> -->
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        <button type="submit">Buy</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
